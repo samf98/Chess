@@ -1,4 +1,4 @@
-# include "position.h"
+# include "position.hpp"
 # include <sstream>
 # include <string>
 
@@ -10,7 +10,7 @@ Position::Position(int x,int y){
 		this->y = y;
 	}
 }
-string toString()const;{
+string Position::toString()const;{
 	stringstream str;
 	str << "("<<x<<","<<y<<")";
 }
@@ -18,15 +18,19 @@ const Position& Position::operator=(const Position&pos){ //sobrecarga de operado
 	this->x = pos.getX();
 	this->y = pos.getY();
 }
-const int getX()const{
+const int Position::getX()const{
 	return x;
 }
-const int getY()const{
+const int Position::getY()const{
 	return y;
 }
-int	setX(int x){
-	this->x=x;
+int	Position::setX(int x){
+	if((x>=0&&x<=7)){ //validacion out of bounds
+		this->x = x;
+	}
 }
-int setY(int y){
-	this->y=y;
+int Position::setY(int y){
+	if((y>=0&&y<=7)){ //validacion out of bounds
+		this->y = y;
+	}
 }
