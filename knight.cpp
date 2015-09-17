@@ -30,3 +30,13 @@ virtual void Knight::moveTo(Piece** board, Position destiny){
 	else
 		cout << "Invalid move" << endl;
 }//se mueve
+virtual string toString()const{
+	stringstream ss;
+	if (color = 'N'){
+		ss << "C";
+	}
+	else{
+		ss << "c";
+	}
+	return ss.str();
+}
