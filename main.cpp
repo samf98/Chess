@@ -14,6 +14,41 @@ int main(int argc, char const *argv[]){
 	const int COLS = 8;
 	Piece** tablero = crearTablero(ROWS,COLS);
 
+	string nombre1,nombre2;
+	cout<<"Jugador1 ingrese su nombre: "<<endl;
+	cin>>nombre1;
+	cout<<"Jugador2 ingrese su nombre: "<<endl;
+	cin>>nombre2;
+	int turno=1;
+	bool gano=false;	
+	while(gano){
+		turno += 1;
+		int x=0,y=0,x1=0,y1=0;
+		if (i % 2 == 1) {
+			
+			cout<<"Turno de: "<<nombre1<<endl;
+			cout<<"Ingrese fila de la pieza que desea mover: "<<endl;
+			cin>>x;
+			cout<<"Ingrese columna de la pieza que desea mover: "<<endl;
+			cin>>y;
+			cout<<"Ingrese fila a la desea mover la pieza: "<<endl;
+			cin>>x1;
+			cout<<"Ingrese fila a la desea mover la pieza: : "<<endl;
+			cin>>y1;
+
+
+		}else{
+			cout<<"Turno de: "<<nombre2<<endl;
+			cout<<"Ingrese fila de la pieza que desea mover: "<<endl;
+			cin>>x;
+			cout<<"Ingrese columna de la pieza que desea mover: "<<endl;
+			cin>>y;
+			cout<<"Ingrese fila a la desea mover la pieza: "<<endl;
+			cin>>x1;
+			cout<<"Ingrese fila a la desea mover la pieza: : "<<endl;
+			cin>>y1;
+		}
+	}
 
 
 
