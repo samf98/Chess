@@ -5,6 +5,7 @@
 using namespace std;
 
 class Piece{
+ protected:
 	char color;
 	Position position;
  public:
