@@ -80,7 +80,7 @@ void Rook::moveTo(Piece** board, Position destiny){
 }
 virtual string toString()const{
 	stringstream ss;
-	if (color = 'N'){
+	if (color == 'N'){
 		ss << "T";
 	}
 	else{

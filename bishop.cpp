@@ -264,7 +264,7 @@ void Bishop::moveTo(Piece** Board, Position destiny){
 
 string Bishop::toString()const{
 	stringstream ss;
-	if (color = 'N'){
+	if (color == 'N'){
 		ss << "A";
 	}
 	else{
