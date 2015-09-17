@@ -2,10 +2,11 @@
 #include "rook.hpp" 
 #include <string> 
 #include <iostream>
+#include <stringstream>
 
 using namespace std;
 
-Rook::Rook(char color, int x, int y):Pieza(color, x, y){
+Rook::Rook(char color, int x, int y):Piece(color, x, y){
 }
 bool Rook::isValidMove(Piece** board, Position destiny){
 	if (((posicion.getX() == destiny.getX()) && (posicion.getY() != destiny.getY()))){ //si se mueve verticalmente
@@ -76,4 +77,14 @@ void Rook::moveTo(Piece** board, Position destiny){
 	else{
 		cout << "Invalid move" << endl;
 	}
+}
+virtual string toString()const{
+	stringstream ss;
+	if (color = 'N'){
+		ss << "T";
+	}
+	else{
+		ss << "t";
+	}
+	return ss.str();
 }

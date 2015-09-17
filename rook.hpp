@@ -11,4 +11,5 @@ class Rook: public Piece{
 	Rook(char color, int x, int y);//constructor
 	virtual bool isValidMove(Piece** board, Position destiny);
 	virtual void moveTo(Position destiny);
+	virtual string toString()const;
 }
