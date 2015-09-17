@@ -11,19 +11,36 @@ Pawn::Pawn(char color, int x, int y):Piece(color,x,y){//constructor
 }
 bool Pawn::isValidMove(Piece** board, Position destiny){
 	int diffY = abs(position.getY()-destiny.getY());
-	int diffX = abs(position.getX()-destiny.getX());
-	if((diffY==1&&diffX==0) || (diffY==2&&firstMove&&diffX==0){ //primer movimiento o movimiento hacia adelante
-		if(board[destiny.getY()][destiny.getX()] == NULL)
-			return true;
-		return false;
-	}
-	else if((diffY==1&&diffX==1)){
-		if(board[destiny.getY()][destiny.getX()].getColor() != color) //comer en diagonal
-			return true;
-		return false;
-	}
-	else{
-		return false;
+	if(color == 'N'){
+		int diffX = position.getX()-destiny.getX();
+		if((diffY==1&&diffX==0) || (diffY==2&&firstMove&&diffX==0){ //primer movimiento o movimiento hacia adelante
+			if(board[destiny.getY()][destiny.getX()] == NULL)
+				return true;
+			return false;
+		}
+		else if((diffY==1&&diffX==1)){
+			if(board[destiny.getY()][destiny.getX()].getColor() != color) //comer en diagonal
+				return true;
+			return false;
+		}
+		else{
+			return false;
+		}
+	} else if(color == 'B'){
+		int diffX = destiny.getX()-position.getX();
+		if((diffY==1&&diffX==0) || (diffY==2&&firstMove&&diffX==0){ //primer movimiento o movimiento hacia adelante
+			if(board[destiny.getY()][destiny.getX()] == NULL)
+				return true;
+			return false;
+		}
+		else if((diffY==1&&diffX==1)){
+			if(board[destiny.getY()][destiny.getX()].getColor() != color) //comer en diagonal
+				return true;
+			return false;
+		}
+		else{
+			return false;
+		}
 	}
 }
 void Pawn::moveTo(Piece** board, Position destiny){
@@ -39,10 +56,10 @@ void Pawn::moveTo(Piece** board, Position destiny){
 string Pawn::toString()const{
 	stringstream ss;
 	if (color == 'N'){
-		ss << "T";
+		ss << "P";
 	}
 	else{
-		ss << "t";
+		ss << "p";
 	}
 	return ss.str();
 }
