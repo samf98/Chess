@@ -1,6 +1,6 @@
-# pragma once 
+#pragma once 
 #include "piece.hpp"
-# include "position.hpp"
+#include "position.hpp"
 
 class Knight: public Piece{
 	char color;
@@ -9,6 +9,6 @@ class Knight: public Piece{
 		Knight(char color, int x , int y;):Piece(color, x, y);
 		virtual bool isValidMove(Piece** board,Position origin, Position destiny);
 		virtual void moveTo(Position origin, Position destiny);
-		~Knight();
+		
 
 };
