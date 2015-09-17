@@ -6,7 +6,7 @@ using namespace std;
 
 Piece(char color, int x, int y){
 	this->color = color;
-	this->position(this->x, this->y);
+	this->position = Position(x,y);
 }
 char getColor()const{
 	return color;

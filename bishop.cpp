@@ -249,7 +249,7 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 	*/
 
 }
-void Bishop::moveTo(Piece** Board, Position destiny){
+/*void Bishop::moveTo(Piece** Board, Position destiny){
 	bool condition = *this->isValidMove(Board,destiny);
 
 	if (condition){
@@ -259,6 +259,16 @@ void Bishop::moveTo(Piece** Board, Position destiny){
 		this->position.setY(destiny.getY());
 	}else{
 		throw "Not a valid move";
+	}
+}*/
+void Bishop::moveTo(Piece** board, Position destiny){
+	if(isValidMove(board,destiny)){
+		board[position.getY()][position.getX()] = NULL;
+		position = destiny;
+		board[position.getY()][position.getX()] = *this;
+	}
+	else{
+		cout << "Invalid move" << endl;
 	}
 }
 
