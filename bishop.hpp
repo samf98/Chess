@@ -7,6 +7,6 @@ class Bishop: public Piece{
 		Bishop(char,int,int);
 		virtual bool isValidMove(Piece** board, Position destiny);
 		virtual void moveTo(Piece** board, Position destiny);
-		string toString()const;
+		virtual string toString()const;
 
 };
