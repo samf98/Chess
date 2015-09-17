@@ -2,6 +2,8 @@
 #include <string>
 #include "position.hpp"
 
+using namespace std;
+
 class Piece{
 	char color;
 	Position position;
@@ -11,6 +13,7 @@ class Piece{
 	Position getPosition()const;
 	void setColor();
 	void setPostion();
-	virtual void moveTo(Position origin, Position destiny);
-	virtual bool isValidMove(Piece** board, Position origin, Position destiny);
+	virtual void moveTo(Position destiny);
+	virtual bool isValidMove(Piece** board, Position destiny);
+	virtual string toString()const;
 };
