@@ -1,6 +1,6 @@
 #include <string>
 #include "knight.hpp"
-#include "pieza.hpp" 
+#include "piece.hpp" 
 
 Knight::Knight(char color, int x , int y;):Piece(color, x, y){
 }//constructor

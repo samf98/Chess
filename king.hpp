@@ -2,12 +2,12 @@
 #include "piece.hpp"
 #include "position.hpp"
 
-class Knight: public Piece{
+class King: public Piece{
 	char color;
 	Position position;
 	public:
-		Knight(char color, int x , int y);
-		virtual bool isValidMove(Piece** board,Position destiny);
+		King(char color, int x , int y);
+		virtual bool isValidMove(Piece** board, Position destiny);
 		virtual void moveTo(Position origin, Position destiny);
 		virtual string toString()const;
 

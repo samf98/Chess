@@ -1,6 +1,6 @@
-#include "bishop.h"
-#include "piece.h"
-#include "position.h"
+#include "bishop.hpp"
+#include "piece.hpp"
+#include "position.hpp"
 #include <cmath>
 #include <sstream>
 using std::stringstream;
