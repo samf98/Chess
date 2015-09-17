@@ -13,7 +13,7 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 
 	int contadorV,contadorH;
 
-	if ((this->position.getY()== destiny.getY()) || (this->position.getX()== destiny.getX())){
+	if ((this->position.getX()== destiny.getX()) || (this->position.getY()== destiny.getY())){
 		//verifica que no se mueva a los lados ni verticalmente
 		return false;
 	
@@ -22,14 +22,14 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 	if (this->color == 'B'){
 		
 
-		if(this->position.getX()>destiny.getX() && this->position.getY()>destiny.getY()){
+		if(this->position.getY()>destiny.getY() && this->position.getX()>destiny.getX()){
 			//Si la pieza esta en la parte inferior y movimiento diagonal a la izquierda
-			contadorV = this->position.getX();
-			contadorH = this->position.getY();
+			contadorV = this->position.getY();
+			contadorH = this->position.getX();
 			contadorV--;
 			contadorH--;
 
-			while (contadorV != destiny.getX() && contadorH != destiny.getY() ){
+			while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
@@ -44,15 +44,15 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 
 
 				
-		}else if(this->position.getX()>destiny.getX() && this->position.getY()<destiny.getY()){
+		}else if(this->position.getY()>destiny.getY() && this->position.getX()<destiny.getX()){
 			//Si la pieza esta en la parte inferior y movimiento diagonal a la derecha
 
-			contadorV = this->position.getX();
-			contadorH = this->position.getY();
+			contadorV = this->position.getY();
+			contadorH = this->position.getX();
 			contadorV--;
 			contadorH++;
 
-			while (contadorV != destiny.getX() && contadorH != destiny.getY() ){
+			while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
@@ -64,14 +64,14 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 			}
 			return true;
 
-		}else if(this->position.getX()<destiny.getX() && this->position.getY()>destiny.getY()){
+		}else if(this->position.getY()<destiny.getY() && this->position.getX()>destiny.getX()){
 			//Si la pieza esta en la parte superior y movimiento diagonal a la izquierda
-			contadorV = this->position.getX();
-			contadorH = this->position.getY();
+			contadorV = this->position.getY();
+			contadorH = this->position.getX();
 			contadorV++;
 			contadorH--;
 
-			while (contadorV != destiny.getX() && contadorH != destiny.getY() ){
+			while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
@@ -83,14 +83,14 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 			}
 			return true;
 
-		}else if(this->position.getX()<destiny.getX() && this->position.getY()<destiny.getY()){
+		}else if(this->position.getY()<destiny.getY() && this->position.getX()<destiny.getX()){
 			//Si la pieza esta en la parte superior y movimiento diagonal a la derecha
-			contadorV = this->position.getX();
-			contadorH = this->position.getY();
+			contadorV = this->position.getY();
+			contadorH = this->position.getX();
 			contadorV++;
 			contadorH++;
 
-			while (contadorV != destiny.getX() && contadorH != destiny.getY() ){
+			while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
@@ -109,14 +109,14 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 
 	}else{
 
-		if(this->position.getX()>destiny.getX() && this->position.getY()>destiny.getY()){
+		if(this->position.getY()>destiny.getY() && this->position.getX()>destiny.getX()){
 			//Si la pieza esta en la parte inferior y movimiento diagonal a la izquierda
-			contadorV = this->position.getX();
-			contadorH = this->position.getY();
+			contadorV = this->position.getY();
+			contadorH = this->position.getX();
 			contadorV--;
 			contadorH--;
 
-			while (contadorV != destiny.getX() && contadorH != destiny.getY() ){
+			while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
@@ -131,15 +131,15 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 
 
 				
-		}else if(this->position.getX()>destiny.getX() && this->position.getY()<destiny.getY()){
+		}else if(this->position.getY()>destiny.getY() && this->position.getX()<destiny.getX()){
 			//Si la pieza esta en la parte inferior y movimiento diagonal a la derecha
 
-			contadorV = this->position.getX();
-			contadorH = this->position.getY();
+			contadorV = this->position.getY();
+			contadorH = this->position.getX();
 			contadorV--;
 			contadorH++;
 
-			while (contadorV != destiny.getX() && contadorH != destiny.getY() ){
+			while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
@@ -151,14 +151,14 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 			}
 			return true;
 
-		}else if(this->position.getX()<destiny.getX() && this->position.getY()>destiny.getY()){
+		}else if(this->position.getY()<destiny.getY() && this->position.getX()>destiny.getX()){
 			//Si la pieza esta en la parte superior y movimiento diagonal a la izquierda
-			contadorV = this->position.getX();
-			contadorH = this->position.getY();
+			contadorV = this->position.getY();
+			contadorH = this->position.getX();
 			contadorV++;
 			contadorH--;
 
-			while (contadorV != destiny.getX() && contadorH != destiny.getY() ){
+			while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
@@ -170,14 +170,14 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 			}
 			return true;
 
-		}else if(this->position.getX()<destiny.getX() && this->position.getY()<destiny.getY()){
+		}else if(this->position.getY()<destiny.getY() && this->position.getX()<destiny.getX()){
 			//Si la pieza esta en la parte superior y movimiento diagonal a la derecha
-			contadorV = this->position.getX();
-			contadorH = this->position.getY();
+			contadorV = this->position.getY();
+			contadorH = this->position.getX();
 			contadorV++;
 			contadorH++;
 
-			while (contadorV != destiny.getX() && contadorH != destiny.getY() ){
+			while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
@@ -193,79 +193,13 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 
 	}
 
-
-
-
-	/*
-	if(this->color=='b'){
-		//Si es movimiento de las piezas blancas
-
-		if(this->position().getY()< destiny.getY()){
-			//Movimiento a la derecha
-			for (int i = position.getX(); i <destiny.getX(); ++i){
-				for (int j = position.getY(); j <destiny.getY(); ++j){
-					if(board[i][j].getPiece().getColor()!=NULL && board[i][j].getPiece().getColor()=='b'){
-						return false;
-					}
-				}
-			}
-				return true;
-		}else{
-			//movimiento a la izquierda
-			for (int i = position.getX(); i <destiny.getX(); ++i){
-				for (int j = position.getY(); j >destiny.getY(); --j){
-					if(board[i][j].getPiece().getColor()!=NULL && board[i][j].getPiece().getColor()=='b'){
-						return false;
-					}
-				}
-			}
-			return true;
-		}
-
-	}else{
-
-		if(this->position().getY() < destiny.getY()){
-			//Movimiento a la derecha
-			for (int i = position.getX(); i <destiny.getX(); ++i){
-				for (int j = position.getY(); j <destiny.getY(); ++j){
-					if(board[i][j].getPiece().getColor()!=NULL && board[i][j].getPiece().getColor()=='n'){
-						return false;
-					}
-				}
-			}
-				return true;
-		}else{
-			//movimiento a la izquierda
-			for (int i = position.getX(); i <destiny.getX(); ++i){
-				for (int j = position.getY(); j >destiny.getY(); --j){
-					if(board[i][j].getPiece().getColor()!=NULL && board[i][j].getPiece().getColor()=='n'){
-						return false;
-					}
-				}
-			}
-			return true;
-		}
-	}
-	*/
-
 }
-/*void Bishop::moveTo(Piece** Board, Position destiny){
-	bool condition = *this->isValidMove(Board,destiny);
 
-	if (condition){
-		Board[destiny.getX()][destiny.getY()] = this;
-		Board[this->position.getX()][this->position.getY()] = NULL;
-		this->position.setX(destiny.getX());
-		this->position.setY(destiny.getY());
-	}else{
-		throw "Not a valid move";
-	}
-}*/
 void Bishop::moveTo(Piece** board, Position destiny){
 	if(isValidMove(board,destiny)){
-		board[position.getY()][position.getX()] = NULL;
+		board[position.getX()][position.getY()] = NULL;
 		position = destiny;
-		board[position.getY()][position.getX()] = *this;
+		board[position.getX()][position.getY()] = *this;
 	}
 	else{
 		cout << "Invalid move" << endl;
@@ -282,5 +216,5 @@ string Bishop::toString()const{
 	}
 	return ss.str();
 }
-}
+
 
