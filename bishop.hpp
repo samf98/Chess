@@ -1,6 +1,6 @@
 #pragma once
-#include "piece.h"
-#include "position.h"
+#include "piece.hpp"
+#include "position.hpp"
 
 class Bishop: public Piece{
 	public:
