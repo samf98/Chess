@@ -11,6 +11,13 @@
 
 using namespace std;
 
+Piece** crearTablero(int rows, int cols);
+void destruirTablero(Piece** tablero, int rows, int cols);
+void imprimir(Piece** tablero);
+void chessInit(Piece** tablero);
+int charToInt(char coordenada);
+
+
 int main(int argc, char const *argv[]){
 	const int ROWS = 8;
 	const int COLS = 8;
@@ -27,18 +34,18 @@ int main(int argc, char const *argv[]){
 	while(gano){
 		turno += 1;
 		int x=0,y=0,x1=0,y1=0;
-		if (i % 2 == 1) {
+		if (turno % 2 == 1) {
 			
 			cout<<"Turno de: "<<nombre1<<endl;
 			cout<<"Ingrese columna de la pieza que desea mover: ";
 			cin>>x;
 			cout<<"Ingrese fila de la pieza que desea mover: ";
-			cin << coordenada1;
+			cin >> coordenada1;
 			y = charToInt(coordenada1);
 			cout<<"Ingrese columna a la desea mover la pieza: ";
 			cin>>x1;
 			cout<<"Ingrese fila a la desea mover la pieza: : ";
-			cin << coordenada2;
+			cin >> coordenada2;
 			y1 = charToInt(coordenada2);
 
 			tablero[y][x].moveTo(tablero,x1,y1);
@@ -50,12 +57,12 @@ int main(int argc, char const *argv[]){
 			cout<<"Ingrese columna de la pieza que desea mover: ";
 			cin>>x;
 			cout<<"Ingrese fila de la pieza que desea mover: ";
-			cin << coordenada1;
+			cin >> coordenada1;
 			y = charToInt(coordenada1);
 			cout<<"Ingrese columna a la desea mover la pieza: ";
 			cin>>x1;
 			cout<<"Ingrese fila a la desea mover la pieza: : ";
-			cin << coordenada2;
+			cin >> coordenada2;
 			y1 = charToInt(coordenada2);
 
 			tablero[y][x].moveTo(tablero,x1,y1);
@@ -65,21 +72,21 @@ int main(int argc, char const *argv[]){
 	destruirTablero(tablero,ROWS,COLS);
 	return 0;
 }
-Piece** crearTablero(int rows, int COLS){
+Piece** crearTablero(int rows, int cols){
 	Piece** retval = new Piece*[rows];
 	for (int i = 0; i < rows; ++i)	{
-		retval[i] = new Piece[columna];
+		retval[i] = new Piece[cols];
 	}
-	for (int i = 0; i < count; ++i){
-		for (int j = 0; j < count; ++j){
+	for (int i = 0; i < rows; ++i){
+		for (int j = 0; j < cols; ++j){
 			retval = NULL;
 		}
 	}
 	chessInit(retval);
 	return retval;
 }
-destruirTablero(Piece** tablero, int rows, int COLS){
-	for (int i = 0; i < columna; ++i)	{
+void destruirTablero(Piece** tablero, int rows, int cols){
+	for (int i = 0; i < cols; ++i)	{
 		delete[] retval[i];
 	}
 	delete[] retval;

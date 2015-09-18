@@ -13,4 +13,4 @@ class Pawn: public Piece{
 	virtual bool isValidMove(Piece** board, Position destiny);
 	virtual void moveTo(Piece** board, Position destiny);
 	virtual string toString()const;
-}
+};
