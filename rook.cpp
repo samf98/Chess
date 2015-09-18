@@ -16,7 +16,7 @@ bool Rook::isValidMove(Piece*** board, Position destiny){
 					return false;
 				}
 			}
-			if (board[destiny.getY()][position.getX()] == NULL || board[destiny.getY()][position.getX()]->color != color){
+			if (board[destiny.getY()][position.getX()] == NULL || board[destiny.getY()][position.getX()]->getColor() != color){
 				//si destiny est vacio o tiene una pieza enemiga
 				return true;
 			}
@@ -30,7 +30,7 @@ bool Rook::isValidMove(Piece*** board, Position destiny){
 					return false;
 				}
 			}
-			if (board[destiny.getY()][position.getX()] == NULL || board[destiny.getY()][position.getX()]->color != color){
+			if (board[destiny.getY()][position.getX()] == NULL || board[destiny.getY()][position.getX()]->getColor() != color){
 				//SI DESTINY ESTA VACIO O TIENE UNA PIEZA ENEMIGA
 				return true;
 			}
@@ -46,7 +46,7 @@ bool Rook::isValidMove(Piece*** board, Position destiny){
 					return false;
 				}
 			}
-			if (board[destiny.getY()][destiny.getX()] == NULL || board[destiny.getY()][destiny.getX()]->color != color){
+			if (board[destiny.getY()][destiny.getX()] == NULL || board[destiny.getY()][destiny.getX()]->getColor() != color){
 				//si destiny est vacio o tiene una pieza enemiga
 				return true;
 			}
@@ -60,7 +60,7 @@ bool Rook::isValidMove(Piece*** board, Position destiny){
 					return false;
 				}
 			}
-			if (board[destiny.getY()][destiny.getX()] == NULL || board[destiny.getY()][destiny.getX()]->color != color){
+			if (board[destiny.getY()][destiny.getX()] == NULL || board[destiny.getY()][destiny.getX()]->getColor() != color){
 				//si destiny est vacio o tiene una pieza enemiga
 				return true;
 			}
@@ -74,7 +74,7 @@ void Rook::moveTo(Piece*** board, Position destiny){
 	if(isValidMove(board,destiny)){
 		board[position.getY()][position.getX()] = NULL;
 		position = destiny;
-		board[position.getY()][position.getX()] = *this;
+		board[position.getY()][position.getX()] = this;
 	}
 	else{
 		cout << "Invalid move" << endl;
