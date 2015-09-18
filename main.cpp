@@ -16,6 +16,7 @@ void destruirTablero(Piece*** tablero, int rows, int cols);
 void imprimir(Piece*** tablero);
 void chessInit(Piece*** tablero);
 int charToInt(char coordenada);
+bool ganar(Piece*** tablero);
 
 int main(int argc, char const *argv[]){
 	const int ROWS = 8;
