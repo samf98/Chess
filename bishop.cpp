@@ -33,8 +33,8 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
-				if (*board[contador][contadorH].getColor() == 'B' ){
-					return false:
+				if (*board[contadorV][contadorH]->getColor() == 'B' ){
+					return false;
 				}
 				contadorV--;
 				contadorH--;
@@ -56,8 +56,8 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
-				if (*board[contador][contadorH].getColor() == 'B' ){
-					return false:
+				if (*board[contadorV][contadorH]->getColor() == 'B' ){
+					return false;
 				}
 				contadorV--;
 				contadorH++;
@@ -75,8 +75,8 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
-				if (*board[contador][contadorH].getColor() == 'B' ){
-					return false:
+				if (*board[contadorV][contadorH]->getColor() == 'B' ){
+					return false;
 				}
 				contadorV--;
 				contadorH--;
@@ -94,8 +94,8 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
-				if (*board[contador][contadorH].getColor() == 'B' ){
-					return false:
+				if (*board[contadorV][contadorH]->getColor() == 'B' ){
+					return false;
 				}
 				contadorV++;
 				contadorH++;
@@ -120,8 +120,8 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
-				if (*board[contador][contadorH].getColor() == 'N' ){
-					return false:
+				if (*board[contadorV][contadorH]->getColor() == 'N' ){
+					return false;
 				}
 				contadorV--;
 				contadorH--;
@@ -143,8 +143,8 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
-				if (*board[contador][contadorH].getColor() == 'N' ){
-					return false:
+				if (*board[contadorV][contadorH]->getColor() == 'N' ){
+					return false;
 				}
 				contadorV--;
 				contadorH++;
@@ -162,8 +162,8 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
-				if (*board[contador][contadorH].getColor() == 'N' ){
-					return false:
+				if (*board[contadorV][contadorH]->getColor() == 'N' ){
+					return false;
 				}
 				contadorV--;
 				contadorH--;
@@ -181,8 +181,8 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
-				if (*board[contador][contadorH].getColor() == 'N' ){
-					return false:
+				if (*board[contadorV][contadorH]->getColor() == 'N' ){
+					return false;
 				}
 				contadorV++;
 				contadorH++;
