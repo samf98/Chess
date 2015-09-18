@@ -1,8 +1,8 @@
-#include "pieza.hpp" 
+#include "piece.hpp" 
 #include "rook.hpp" 
 #include <string> 
 #include <iostream>
-#include <stringstream>
+#include <sstream>
 
 using namespace std;
 
