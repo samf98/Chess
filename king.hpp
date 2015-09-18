@@ -6,7 +6,7 @@ class King: public Piece{
 	public:
 		King(char color, int x , int y);
 		virtual bool isValidMove(Piece*** board, Position destiny);
-		virtual void moveTo(Piece*** board, Position destiny);
+		virtual bool moveTo(Piece*** board, Position destiny);
 		virtual string toString()const;
 
 };

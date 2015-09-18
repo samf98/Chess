@@ -27,13 +27,13 @@ int main(int argc, char const *argv[]){
 	cin>>nombre1;
 	cout<<"Jugador2 ingrese su nombre: "<<endl;
 	cin>>nombre2;
-	int turno=1;
+	int turno=0;
 	bool gano=false;
 	char coordenada1, coordenada2;	
 	while(!gano){
 		bool valid = false;//variable de validacion
 		imprimir(tablero);
-		turno += 1;
+		turno++;
 		int x=0,y=0,x1=0,y1=0;
 		if (turno % 2 == 1) {
 			while(!valid){//ciclo de validacion
@@ -52,8 +52,10 @@ int main(int argc, char const *argv[]){
 				y1 = charToInt(coordenada2);
 				Position pos(x1,y1);
 				if (tablero[y][x]->getColor()=='B' && tablero[y][x] != NULL){//validacion de mover
-					tablero[y][x]->moveTo(tablero,pos);
-					valid = true;//variable de validacion
+					if(tablero[y][x]->moveTo(tablero,pos))
+						valid = true;//variable de validacion
+					else
+						valid = false;
 				}else{
 					cerr << "No se puede mover las piezas del juagdor opuesto" << endl;
 				}
@@ -77,10 +79,12 @@ int main(int argc, char const *argv[]){
 
 				Position pos(x1,y1);
 				if (tablero[y][x]->getColor()=='N' && tablero[y][x] != NULL){//validacion de mover
-					tablero[y][x]->moveTo(tablero,pos);
-					valid = true;//variable de validacion
+					if(tablero[y][x]->moveTo(tablero,pos))
+						valid = true;//variable de validacion
+					else
+						valid = false;
 				}else{
-					cerr << "No se puede mover las piezas del juagdor opuesto" << endl;
+					cerr << "No se puede mover las piezas del jugador opuesto" << endl;
 				}
 			}
 		}

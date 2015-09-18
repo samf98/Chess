@@ -70,14 +70,16 @@ bool Rook::isValidMove(Piece*** board, Position destiny){
 		}
 	}
 }
-void Rook::moveTo(Piece*** board, Position destiny){
+bool Rook::moveTo(Piece*** board, Position destiny){
 	if(isValidMove(board,destiny)){
 		board[position.getY()][position.getX()] = NULL;
 		position = destiny;
 		board[position.getY()][position.getX()] = this;
+		return true;
 	}
 	else{
 		cout << "Invalid move" << endl;
+		return false;
 	}
 }
 string Rook::toString()const{

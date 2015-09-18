@@ -17,14 +17,16 @@ bool Queen::isValidMove(Piece*** board, Position destiny){
 	else
 		return false;
 }
-void Queen::moveTo(Piece*** board, Position destiny){
+bool Queen::moveTo(Piece*** board, Position destiny){
 	if(isValidMove(board,destiny)){
 		board[position.getY()][position.getX()] = NULL;
 		position = destiny;
 		board[position.getY()][position.getX()] = this;
+		return true;
 	}
 	else{
 		cout << "Invalid move" << endl;
+		return false;
 	}
 }
 
