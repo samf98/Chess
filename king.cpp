@@ -75,7 +75,7 @@ void King::moveTo(Piece***board, Position destiny){
 	if(isValidMove(board,destiny)){
 		board[position.getY()][position.getX()] = NULL;
 		position = destiny;
-		*board[position.getY()][position.getX()] = *this;
+		board[position.getY()][position.getX()] = this;
 	}
 	else{
 		cout << "Invalid move" << endl;
