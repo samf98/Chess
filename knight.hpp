@@ -3,8 +3,6 @@
 #include "position.hpp"
 
 class Knight: public Piece{
-	char color;
-	Position position;
 	public:
 		Knight(char color, int x , int y);
 		virtual bool isValidMove(Piece** board,Position destiny);
