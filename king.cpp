@@ -16,7 +16,7 @@ bool King::isValidMove(Piece*** board, Position destiny){
 
 	if(this->getColor()=='B'){
 		//Verifica que no sean del mismo color
-		if (*board[destiny.getY()][destiny.getX()].getColor()=='B'){
+		if (board[destiny.getY()][destiny.getX()]->getColor()=='B'){
 			return false;	
 		} else{
 
@@ -42,7 +42,7 @@ bool King::isValidMove(Piece*** board, Position destiny){
 
 		}	
 	}else{
-		if (*board[destiny.getY()][destiny.getX()].getColor()=='N'){
+		if (board[destiny.getY()][destiny.getX()]->getColor()=='N'){
 			return false;	
 		} else{
 			//Busca la diferencia Vertical
@@ -72,10 +72,10 @@ bool King::isValidMove(Piece*** board, Position destiny){
 
 }
 void King::moveTo(Piece** *board, Position destiny){
-	if(isValidMove(*board,destiny)){
-		*board[position.getY()][position.getX()] = NULL;
+	if(isValidMove(board,destiny)){
+		board[position.getY()][position.getX()] = NULL;
 		position = destiny;
-		*board[position.getY()][position.getX()] = *this;
+		board[position.getY()][position.getX()] = *this;
 	}
 	else{
 		cout << "Invalid move" << endl;
