@@ -1,14 +1,14 @@
-#include "pieza.hpp" 
-#include "ueen.hpp" 
+#include "piece.hpp" 
+#include "queen.hpp" 
 #include <string> 
 #include <iostream>
-#include <stringstream>
+#include <sstream>
 
 using namespace std;
 
 Queen::Queen(char color, int x, int y):Piece(color, x, y){
 }
-bool Queen::isValidMove(Piece** board, Position destiny){
+bool Queen::isValidMove(Piece*** board, Position destiny){
 	int contadorV,contadorH;
 	if (((position.getX() == destiny.getX()) && (position.getY() != destiny.getY()))){ //si se mueve verticalmente
 		if(position.getY() < destiny.getY()){ //si se mueve hacia abajo
