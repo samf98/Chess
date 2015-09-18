@@ -3,13 +3,15 @@
 #include "position.hpp"
 #include <cmath>
 #include <sstream>
+#include <iostream>
 using std::stringstream;
+using std::cout;
 
 
 Bishop::Bishop(char color,int X,int Y):Piece(color,X,Y){
 	//Se llama al constructor de la clase Piece
 }
-bool Bishop::isValidMove(Piece**board, Position destiny){
+bool Bishop::isValidMove(Piece***board, Position destiny){
 
 	int contadorV,contadorH;
 
@@ -33,7 +35,7 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
-				if (*board[contadorV][contadorH]->getColor() == 'B' ){
+				if (board[contadorV][contadorH]->getColor() == 'B' ){
 					return false;
 				}
 				contadorV--;
@@ -56,7 +58,7 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
-				if (*board[contadorV][contadorH]->getColor() == 'B' ){
+				if (board[contadorV][contadorH]->getColor() == 'B' ){
 					return false;
 				}
 				contadorV--;
@@ -75,7 +77,7 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
-				if (*board[contadorV][contadorH]->getColor() == 'B' ){
+				if (board[contadorV][contadorH]->getColor() == 'B' ){
 					return false;
 				}
 				contadorV--;
@@ -94,7 +96,7 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
-				if (*board[contadorV][contadorH]->getColor() == 'B' ){
+				if (board[contadorV][contadorH]->getColor() == 'B' ){
 					return false;
 				}
 				contadorV++;
@@ -120,7 +122,7 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
-				if (*board[contadorV][contadorH]->getColor() == 'N' ){
+				if (board[contadorV][contadorH]->getColor() == 'N' ){
 					return false;
 				}
 				contadorV--;
@@ -143,7 +145,7 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
-				if (*board[contadorV][contadorH]->getColor() == 'N' ){
+				if (board[contadorV][contadorH]->getColor() == 'N' ){
 					return false;
 				}
 				contadorV--;
@@ -162,7 +164,7 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
-				if (*board[contadorV][contadorH]->getColor() == 'N' ){
+				if (board[contadorV][contadorH]->getColor() == 'N' ){
 					return false;
 				}
 				contadorV--;
@@ -181,7 +183,7 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
 					return false;
 				}
-				if (*board[contadorV][contadorH]->getColor() == 'N' ){
+				if (board[contadorV][contadorH]->getColor() == 'N' ){
 					return false;
 				}
 				contadorV++;
@@ -197,9 +199,9 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 
 void Bishop::moveTo(Piece*** board, Position destiny){
 	if(isValidMove(board,destiny)){
-		*board[position.getY()][position.getX()] = NULL;
+		board[position.getY()][position.getX()] = NULL;
 		position = destiny;
-		*board[position.getY()][position.getX()] = *this;
+		board[position.getY()][position.getX()] = this;
 	}
 	else{
 		cout << "Invalid move" << endl;
