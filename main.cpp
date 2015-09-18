@@ -51,9 +51,9 @@ int main(int argc, char const *argv[]){
 				cin >> coordenada2;
 				y1 = charToInt(coordenada2);
 				Position pos(x1,y1);
-				if (tablero[y][x]->getColor()=='B' && tablero[y][x] != NULL && (x1!=x && y1!=y)){//validacion de mover
+				if (tablero[y][x]->getColor()=='B' && tablero[y][x] != NULL){//validacion de mover
 					tablero[y][x]->moveTo(tablero,pos);
-					valid = false;//variable de validacion
+					valid = true;//variable de validacion
 				}else{
 					cerr << "No se puede mover las piezas del juagdor opuesto" << endl;
 				}
@@ -76,9 +76,9 @@ int main(int argc, char const *argv[]){
 				y1 = charToInt(coordenada2);
 
 				Position pos(x1,y1);
-				if (tablero[y][x]->getColor()=='N' && tablero[y][x] != NULL && (x1!=x && y1!=y)){//validacion de mover
+				if (tablero[y][x]->getColor()=='N' && tablero[y][x] != NULL){//validacion de mover
 					tablero[y][x]->moveTo(tablero,pos);
-					valid = false;//variable de validacion
+					valid = true;//variable de validacion
 				}else{
 					cerr << "No se puede mover las piezas del juagdor opuesto" << endl;
 				}
