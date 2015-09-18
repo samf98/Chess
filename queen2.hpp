@@ -6,7 +6,7 @@
 
 using std::string;
 
-class Queen: public Piece{
+class Queen: public Piece, Rook, Bishop{
 	char color;
 	Position position;
   public: 
