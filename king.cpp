@@ -63,7 +63,8 @@ bool King::isValidMove(Piece*** board, Position destiny){
 				return false;
 			}
 
-			return true;}
+			return true;
+		}
 
 
 	}
