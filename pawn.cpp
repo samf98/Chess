@@ -19,7 +19,7 @@ bool Pawn::isValidMove(Piece*** board, Position destiny){
 			return false;
 		}
 		else if((diffY==1&&diffX==1)){
-			if(board[destiny.getY()][destiny.getX()].getColor() != color) //comer en diagonal
+			if(board[destiny.getY()][destiny.getX()]->getColor() != color) //comer en diagonal
 				return true;
 			return false;
 		}
@@ -34,7 +34,7 @@ bool Pawn::isValidMove(Piece*** board, Position destiny){
 			return false;
 		}
 		else if((diffY==1&&diffX==1)){
-			if(board[destiny.getY()][destiny.getX()].getColor() != color) //comer en diagonal
+			if(board[destiny.getY()][destiny.getX()]->getColor() != color) //comer en diagonal
 				return true;
 			return false;
 		}
