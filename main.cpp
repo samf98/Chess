@@ -9,6 +9,8 @@
 #include "rook.hpp"
 #include "pawn.hpp"
 
+using namespace std;
+
 int main(int argc, char const *argv[]){
 	const int ROWS = 8;
 	const int COLS = 8;
@@ -20,56 +22,64 @@ int main(int argc, char const *argv[]){
 	cout<<"Jugador2 ingrese su nombre: "<<endl;
 	cin>>nombre2;
 	int turno=1;
-	bool gano=false;	
+	bool gano=false;
+	char coordenada1, coordenada2;	
 	while(gano){
 		turno += 1;
 		int x=0,y=0,x1=0,y1=0;
 		if (i % 2 == 1) {
 			
 			cout<<"Turno de: "<<nombre1<<endl;
-			cout<<"Ingrese fila de la pieza que desea mover: "<<endl;
+			cout<<"Ingrese columna de la pieza que desea mover: ";
 			cin>>x;
-			cout<<"Ingrese columna de la pieza que desea mover: "<<endl;
-			cin>>y;
-			cout<<"Ingrese fila a la desea mover la pieza: "<<endl;
+			cout<<"Ingrese fila de la pieza que desea mover: ";
+			cin << coordenada1;
+			y = charToInt(coordenada1);
+			cout<<"Ingrese columna a la desea mover la pieza: ";
 			cin>>x1;
-			cout<<"Ingrese fila a la desea mover la pieza: : "<<endl;
-			cin>>y1;
+			cout<<"Ingrese fila a la desea mover la pieza: : ";
+			cin << coordenada2;
+			y1 = charToInt(coordenada2);
+
+			tablero[y][x].moveTo(tablero,x1,y1);
 
 
 		}else{
+
 			cout<<"Turno de: "<<nombre2<<endl;
-			cout<<"Ingrese fila de la pieza que desea mover: "<<endl;
+			cout<<"Ingrese columna de la pieza que desea mover: ";
 			cin>>x;
-			cout<<"Ingrese columna de la pieza que desea mover: "<<endl;
-			cin>>y;
-			cout<<"Ingrese fila a la desea mover la pieza: "<<endl;
+			cout<<"Ingrese fila de la pieza que desea mover: ";
+			cin << coordenada1;
+			y = charToInt(coordenada1);
+			cout<<"Ingrese columna a la desea mover la pieza: ";
 			cin>>x1;
-			cout<<"Ingrese fila a la desea mover la pieza: : "<<endl;
-			cin>>y1;
+			cout<<"Ingrese fila a la desea mover la pieza: : ";
+			cin << coordenada2;
+			y1 = charToInt(coordenada2);
+
+			tablero[y][x].moveTo(tablero,x1,y1);
 		}
 	}
-
-
-
-
-
-
-
 
 	destruirTablero(tablero,ROWS,COLS);
 	return 0;
 }
-Piece** crearTablero(int rows, int cols){
+Piece** crearTablero(int rows, int COLS){
 	Piece** retval = new Piece*[rows];
 	for (int i = 0; i < rows; ++i)	{
-		retval[i] = new Piece[cols];
+		retval[i] = new Piece[columna];
+	}
+	for (int i = 0; i < count; ++i){
+		for (int j = 0; j < count; ++j){
+			retval = NULL;
+		}
 	}
 	chessInit(retval);
 	return retval;
 }
-destruirTablero(Piece** tablero, int rows, int cols){
-	for (int i = 0; i < cols; ++i)	{
+destruirTablero(Piece** tablero, int rows, int COLS){
+	for (int i = 0; i < columna; ++i)	{
 		delete[] retval[i];
 	}
 	delete[] retval;
@@ -91,38 +101,76 @@ void imprimir(Piece** tablero){//imprimir tablero
 void chessInit(Piece** tablero){//Inicializar tablero
 	//piezas blancas
 	//torres
-	tablero[0][0] = Rook('B',0,0);
-	tablero[0][7] = Rook('B',0,7);
+	tablero[0][0] = new Rook('B',0,0);
+	tablero[0][7] = new Rook('B',0,7);
 	//caballos
-	tablero[0][1] = Knight('B',0,1);
-	tablero[0][6] = Knight('B',0,6);
+	tablero[0][1] = new Knight('B',0,1);
+	tablero[0][6] = new Knight('B',0,6);
 	//alfiles
-	tablero[0][2] = Bishop('B',0,2);
-	tablero[0][5] = Bishop('B',0,5);
+	tablero[0][2] = new Bishop('B',0,2);
+	tablero[0][5] = new Bishop('B',0,5);
 	//rey
-	tablero[0][3] = King('B',0,3);
+	tablero[0][3] = new King('B',0,3);
 	//reina
-	tablero[0][4] = Queen('B',0,4);
+	tablero[0][4] = new Queen('B',0,4);
 	//peones
 	for (int i = 0; i < 8; ++i){
-		tablero[1][i] = Pawn('B',1,i);
+		tablero[1][i] = new Pawn('B',1,i);
 	}
 	//piezas negras
 	//torres
-	tablero[7][0] = Rook('N',7,0);
-	tablero[7][7] = Rook('N',7,7);
+	tablero[7][0] = new Rook('N',7,0);
+	tablero[7][7] = new Rook('N',7,7);
 	//caballos
-	tablero[7][1] = Knight('N',7,1);
-	tablero[7][6] = Knight('N',7,6);
+	tablero[7][1] = new Knight('N',7,1);
+	tablero[7][6] = new Knight('N',7,6);
 	//alfiles
-	tablero[7][2] = Bishop('N',7,2);
-	tablero[7][5] = Bishop('N',7,5);
+	tablero[7][2] = new Bishop('N',7,2);
+	tablero[7][5] = new Bishop('N',7,5);
 	//rey
-	tablero[7][3] = King('N',7,3);
+	tablero[7][3] = new King('N',7,3);
 	//reina
-	tablero[7][4] = Queen('N',7,4);
+	tablero[7][4] = new Queen('N',7,4);
 	//peones
 	for (int i = 0; i < 8; ++i){
-		tablero[6][i] = Pawn('B',6,i);
+		tablero[6][i] = new Pawn('B',6,i);
+	}
+}
+int charToInt(char coordenada){
+	switch (coordenada){
+		case 'a':
+			return 0;
+		case 'b':
+			return 1;
+		case 'c':
+			return 2;
+		case 'd':
+			return 3;
+		case 'e':
+			return 4;
+		case 'f':
+			return 5;
+		case 'g':
+			return 6;
+		case 'h':
+			return 7;
+		case 'A':
+			return 0;
+		case 'B':
+			return 1;
+		case 'C':
+			return 2;
+		case 'D':
+			return 3;
+		case 'E':
+			return 4;
+		case 'F':
+			return 5;
+		case 'G':
+			return 6;
+		case 'H':
+			return 7;
+		default:
+			return -1;
 	}
 }
