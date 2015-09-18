@@ -22,24 +22,201 @@ bool Bishop::isValidMove(Piece***board, Position destiny){
 
 
 	if (fabs(this->position.getY()-destiny.getY())==fabs(this->position.getX()-destiny.getX())){
-		if(this->color == 'B'){
-			if(board[destiny.getY()][destiny.getX()] == NULL ){
+		
+
+
+
+	
+		if (this->getColor() == 'B'){
+			if(this->position.getY() > destiny.getY() && this->position.getX()>destiny.getX()){
+				//si la posicion esta en un punto bajo y se quiere mover a la izquierda
+				contadorY=this->position.getY();
+				contadorX=this->position.getY();
+				
+
+				while(true){
+					if (board[contadorY][contadorX] == NULL){
+						contadorY--;
+						contadorX--;
+
+					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='B'){
+						return false;
+					}
+					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
+						break;
+					}
+
+
+				}
 				return true;
-			}else if (board[destiny.getY()][destiny.getX()] != NULL && board[destiny.getY()][destiny.getX()] == 'B'){
-				return false;
-			}else if(board[destiny.getY()][destiny.getX()] != NULL && board[destiny.getY()][destiny.getX()] == 'N'){
+
+
+
+			}else if(this->position.getY() > destiny.getY() && this->position.getX()<destiny.getX()){
+				//si la posicion esta en un punto bajo y se quiere mover a la derecha
+				contadorY=this->position.getY();
+				contadorX=this->position.getY();
+				
+
+				while(true){
+					
+					if (board[contadorY][contadorX] == NULL){
+						contadorY--;
+						contadorX++;
+
+					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='B'){
+						return false;
+					}
+					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
+						break;
+					}
+				}
+				return true;
+
+			}else if(this->position.getY() < destiny.getY() && this->position.getX()>destiny.getX()){
+				//si la posicion esta en un punto alto y se quiere mover a la izquierda
+				contadorY=this->position.getY();
+				contadorX=this->position.getY();
+				
+
+				while(true){
+					
+					if (board[contadorY][contadorX] == NULL){
+						contadorY++;
+						contadorX--;
+
+					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='B'){
+						return false;
+					}
+					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
+						break;
+					}
+				}
+				return true;
+
+			}else if(this->position.getY() < destiny.getY() && this->position.getX()<destiny.getX()){
+				// si la posicion esta en un punto alto y se quiere mover a la derecha
+				contadorY=this->position.getY();
+				contadorX=this->position.getY();
+				
+
+				while(true){
+					
+					if (board[contadorY][contadorX] == NULL){
+						contadorY++;
+						contadorX++;
+
+					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='B'){
+						return false;
+					}
+					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
+						break;
+					}
+
+				}
 				return true;
 			}
 		} else {
-			if(board[destiny.getY()][destiny.getX()] == NULL ){
+			//si el color de esta pieza es Negro
+
+			if(this->position.getY() > destiny.getY() && this->position.getX()>destiny.getX()){
+				//si la posicion esta en un punto bajo y se quiere mover a la izquierda
+				contadorY=this->position.getY();
+				contadorX=this->position.getY();
+				
+
+
+				while(true){
+					
+					if (board[contadorY][contadorX] == NULL){
+						contadorY--;
+						contadorX--;
+
+					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='N'){
+						return false;
+					}
+					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
+						break;
+					}
+
+				}
 				return true;
-			}else if (board[destiny.getY()][destiny.getX()] != NULL && board[destiny.getY()][destiny.getX()] == 'N'){
-				return false;
-			}else if(board[destiny.getY()][destiny.getX()] != NULL && board[destiny.getY()][destiny.getX()] == 'B'){
+
+
+
+			}else if(this->position.getY() > destiny.getY() && this->position.getX()<destiny.getX()){
+				//si la posicion esta en un punto bajo y se quiere mover a la derecha
+				contadorY=this->position.getY();
+				contadorX=this->position.getY();
+
+				
+				while(true){
+					
+					
+					if (board[contadorY][contadorX] == NULL){
+						contadorY--;
+						contadorX++;
+
+					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='N'){
+						return false;
+					}
+					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
+						break;
+					}
+
+				}
+				
+				return true;
+
+			}else if(this->position.getY() < destiny.getY() && this->position.getX()>destiny.getX()){
+				//si la posicion esta en un punto alto y se quiere mover a la izquierda
+				contadorY=this->position.getY();
+				contadorX=this->position.getY();
+
+				
+
+				while(true){
+					
+					if (board[contadorY][contadorX] == NULL){
+						contadorY++;
+						contadorX--;
+
+					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='N'){
+						return false;
+					}
+					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
+						break;
+					}
+
+				}
+				
+				return true;
+
+			}else if(this->position.getY() < destiny.getY() && this->position.getX()<destiny.getX()){
+				// si la posicion esta en un punto alto y se quiere mover a la derecha
+				contadorY=this->position.getY();
+				contadorX=this->position.getY();
+				
+
+				while(true){
+					
+					if (board[contadorY][contadorX] == NULL){
+						contadorY++;
+						contadorX++;
+
+					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='N'){
+						return false;
+					}
+					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
+						break;
+					}
+
+				}
 				return true;
 			}
+
 		}
-	
+		
 	}else{
 		return false;
 	}
