@@ -13,187 +13,395 @@ Bishop::Bishop(char color,int X,int Y):Piece(color,X,Y){
 }
 bool Bishop::isValidMove(Piece***board, Position destiny){
 
-	int contadorV,contadorH;
+	int contadorY,contadorX;
 
 	if ((this->position.getX()== destiny.getX()) || (this->position.getY()== destiny.getY())){
 		//verifica que no se mueva a los lados ni verticalmente
 		return false;
-	
 	}
 
-	if (this->color == 'B'){
-		
 
-		if(this->position.getY()>destiny.getY() && this->position.getX()>destiny.getX()){
-			//Si la pieza esta en la parte inferior y movimiento diagonal a la izquierda
-			contadorV = this->position.getY();
-			contadorH = this->position.getX();
-			contadorV--;
-			contadorH--;
+	if (fabs(this->position.getY()-destiny.getY())==fabs(this->position.getX()-destiny.getX())){
 
-			while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
-				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
-					return false;
+
+		if (this->getColor() == 'B'){
+			if(this->position.getY() > destiny.getY() && this->position.getX()>destiny.getX()){
+				//si la posicion esta en un punto bajo y se quiere mover a la izquierda
+				contadorY=this->position.getY();
+				contadorX=this->position.getY();
+				contadorY--;
+				contadorX--;
+
+				while(true){
+					if (board[contadorY][contadorX] == NULL){
+						contadorY--;
+						contadorX--;
+
+					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='B'){
+						return false;
+					}
+					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
+						break;
+					}
+
+
 				}
-				if (board[contadorV][contadorH]->getColor() == 'B' ){
-					return false;
+				return true;
+
+
+
+			}else if(this->position.getY() > destiny.getY() && this->position.getX()<destiny.getX()){
+				//si la posicion esta en un punto bajo y se quiere mover a la derecha
+				contadorY=this->position.getY();
+				contadorX=this->position.getY();
+				contadorY--;
+				contadorX++;
+
+				while(true){
+					
+					if (board[contadorY][contadorX] == NULL){
+						contadorY--;
+						contadorX++;
+
+					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='B'){
+						return false;
+					}
+					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
+						break;
+					}
 				}
-				contadorV--;
-				contadorH--;
+				return true;
+
+			}else if(this->position.getY() < destiny.getY() && this->position.getX()>destiny.getX()){
+				//si la posicion esta en un punto alto y se quiere mover a la izquierda
+				contadorY=this->position.getY();
+				contadorX=this->position.getY();
+				contadorY++;
+				contadorX--;
+
+				while(true){
+					
+					if (board[contadorY][contadorX] == NULL){
+						contadorY++;
+						contadorX--;
+
+					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='B'){
+						return false;
+					}
+					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
+						break;
+					}
+				}
+				return true;
+
+			}else if(this->position.getY() < destiny.getY() && this->position.getX()<destiny.getX()){
+				// si la posicion esta en un punto alto y se quiere mover a la derecha
+				contadorY=this->position.getY();
+				contadorX=this->position.getY();
+				contadorY++;
+				contadorX++;
+
+				while(true){
+					
+					if (board[contadorY][contadorX] == NULL){
+						contadorY++;
+						contadorX++;
+
+					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='B'){
+						return false;
+					}
+					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
+						break;
+					}
+
+				}
+				return true;
 			}
-			return true;
+		} else {
+			//si el color de esta pieza es Negro
+
+			if(this->position.getY() > destiny.getY() && this->position.getX()>destiny.getX()){
+				//si la posicion esta en un punto bajo y se quiere mover a la izquierda
+				contadorY=this->position.getY();
+				contadorX=this->position.getY();
+				contadorY--;
+				contadorX--;
+
+
+				while(true){
+					
+					if (board[contadorY][contadorX] == NULL){
+						contadorY--;
+						contadorX--;
+
+					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='N'){
+						return false;
+					}
+					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
+						break;
+					}
+
+				}
+				return true;
 
 
 
+			}else if(this->position.getY() > destiny.getY() && this->position.getX()<destiny.getX()){
+				//si la posicion esta en un punto bajo y se quiere mover a la derecha
+				contadorY=this->position.getY();
+				contadorX=this->position.getY();
+
+				contadorY--;
+				contadorX++;
+				while(true){
+					
+					
+					if (board[contadorY][contadorX] == NULL){
+						contadorY--;
+						contadorX++;
+
+					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='N'){
+						return false;
+					}
+					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
+						break;
+					}
+
+				}
 				
-		}else if(this->position.getY()>destiny.getY() && this->position.getX()<destiny.getX()){
-			//Si la pieza esta en la parte inferior y movimiento diagonal a la derecha
+				return true;
 
-			contadorV = this->position.getY();
-			contadorH = this->position.getX();
-			contadorV--;
-			contadorH++;
+			}else if(this->position.getY() < destiny.getY() && this->position.getX()>destiny.getX()){
+				//si la posicion esta en un punto alto y se quiere mover a la izquierda
+				contadorY=this->position.getY();
+				contadorX=this->position.getY();
 
-			while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
-				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
-					return false;
+				contadorY++;
+				contadorX--;
+
+				while(true){
+					
+					if (board[contadorY][contadorX] == NULL){
+						contadorY++;
+						contadorX--;
+
+					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='N'){
+						return false;
+					}
+					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
+						break;
+					}
+
 				}
-				if (board[contadorV][contadorH]->getColor() == 'B' ){
-					return false;
+				
+				return true;
+
+			}else if(this->position.getY() < destiny.getY() && this->position.getX()<destiny.getX()){
+				// si la posicion esta en un punto alto y se quiere mover a la derecha
+				contadorY=this->position.getY();
+				contadorX=this->position.getY();
+				contadorY++;
+				contadorX++;
+
+				while(true){
+					
+					if (board[contadorY][contadorX] == NULL){
+						contadorY++;
+						contadorX++;
+
+					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='N'){
+						return false;
+					}
+					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
+						break;
+					}
+
 				}
-				contadorV--;
-				contadorH++;
+				return true;
 			}
-			return true;
-
-		}else if(this->position.getY()<destiny.getY() && this->position.getX()>destiny.getX()){
-			//Si la pieza esta en la parte superior y movimiento diagonal a la izquierda
-			contadorV = this->position.getY();
-			contadorH = this->position.getX();
-			contadorV++;
-			contadorH--;
-
-			while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
-				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
-					return false;
-				}
-				if (board[contadorV][contadorH]->getColor() == 'B' ){
-					return false;
-				}
-				contadorV--;
-				contadorH--;
-			}
-			return true;
-
-		}else if(this->position.getY()<destiny.getY() && this->position.getX()<destiny.getX()){
-			//Si la pieza esta en la parte superior y movimiento diagonal a la derecha
-			contadorV = this->position.getY();
-			contadorH = this->position.getX();
-			contadorV++;
-			contadorH++;
-
-			while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
-				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
-					return false;
-				}
-				if (board[contadorV][contadorH]->getColor() == 'B' ){
-					return false;
-				}
-				contadorV++;
-				contadorH++;
-			}
-			return true;
 
 		}
+	}else{
+		return false;
+	}
 
+
+
+
+
+
+
+	/*
+	if (this->color == 'B'){
 		
+		if(board[destiny.getY()][destiny.getX()]==NULL || board[destiny.getY()][destiny.getX()]->getColor()=='N'){
+			if(this->position.getY()>destiny.getY() && this->position.getX()>destiny.getX()){
+				//Si la pieza esta en la parte inferior y movimiento diagonal a la izquierda
+				contadorV = this->position.getY();
+				contadorH = this->position.getX();
+				contadorV--;
+				contadorH--;
+
+				while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
+					if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
+						return false;
+					}
+					if (board[contadorV][contadorH]->getColor() == 'B' ){
+						return false;
+					}
+					contadorV--;
+					contadorH--;
+				}
+				return true;
+
+
+
+					
+			}else if(this->position.getY()>destiny.getY() && this->position.getX()<destiny.getX()){
+				//Si la pieza esta en la parte inferior y movimiento diagonal a la derecha
+
+				contadorV = this->position.getY();
+				contadorH = this->position.getX();
+				contadorV--;
+				contadorH++;
+
+				while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
+					if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
+						return false;
+					}
+					if (board[contadorV][contadorH]->getColor() == 'B' ){
+						return false;
+					}
+					contadorV--;
+					contadorH++;
+				}
+				return true;
+
+			}else if(this->position.getY()<destiny.getY() && this->position.getX()>destiny.getX()){
+				//Si la pieza esta en la parte superior y movimiento diagonal a la izquierda
+				contadorV = this->position.getY();
+				contadorH = this->position.getX();
+				contadorV++;
+				contadorH--;
+
+				while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
+					if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
+						return false;
+					}
+					if (board[contadorV][contadorH]->getColor() == 'B' ){
+						return false;
+					}
+					contadorV--;
+					contadorH--;
+				}
+				return true;
+
+			}else if(this->position.getY()<destiny.getY() && this->position.getX()<destiny.getX()){
+				//Si la pieza esta en la parte superior y movimiento diagonal a la derecha
+				contadorV = this->position.getY();
+				contadorH = this->position.getX();
+				contadorV++;
+				contadorH++;
+
+				while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
+					if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
+						return false;
+					}
+					if (board[contadorV][contadorH]->getColor() == 'B' ){
+						return false;
+					}
+					contadorV++;
+					contadorH++;
+				}
+				return true;
+
+			}
+
+		}else{
+			return false;
+		}
 
 
 	}else{
+		if(board[destiny.getY()][destiny.getX()]==NULL || board[destiny.getY()][destiny.getX()]->getColor()=='B'){
+			if(this->position.getY()>destiny.getY() && this->position.getX()>destiny.getX()){
+				//Si la pieza esta en la parte inferior y movimiento diagonal a la izquierda
+				contadorV = this->position.getY();
+				contadorH = this->position.getX();
 
-		if(this->position.getY()>destiny.getY() && this->position.getX()>destiny.getX()){
-			//Si la pieza esta en la parte inferior y movimiento diagonal a la izquierda
-			contadorV = this->position.getY();
-			contadorH = this->position.getX();
-			contadorV--;
-			contadorH--;
+				while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
+					if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
+						return false;
+					}
+					if (board[contadorV][contadorH]->getColor() == 'N' ){
+						return false;
+					}
+					contadorV--;
+					contadorH--;
+				}
+				return true;
 
-			while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
-				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
-					return false;
+
+
+					
+			}else if(this->position.getY()>destiny.getY() && this->position.getX()<destiny.getX()){
+				//Si la pieza esta en la parte inferior y movimiento diagonal a la derecha
+
+				contadorV = this->position.getY();
+				contadorH = this->position.getX();
+
+				while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
+					if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
+						return false;
+					}
+					if (board[contadorV][contadorH]->getColor() == 'N' ){
+						return false;
+					}
+					contadorV--;
+					contadorH++;
 				}
-				if (board[contadorV][contadorH]->getColor() == 'N' ){
-					return false;
+				return true;
+
+			}else if(this->position.getY()<destiny.getY() && this->position.getX()>destiny.getX()){
+				//Si la pieza esta en la parte superior y movimiento diagonal a la izquierda
+				contadorV = this->position.getY();
+				contadorH = this->position.getX();
+
+
+				while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
+					if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
+						return false;
+					}
+					if (board[contadorV][contadorH]->getColor() == 'N' ){
+						return false;
+					}
+					contadorV--;
+					contadorH--;
 				}
-				contadorV--;
-				contadorH--;
+				return true;
+
+			}else if(this->position.getY()<destiny.getY() && this->position.getX()<destiny.getX()){
+				//Si la pieza esta en la parte superior y movimiento diagonal a la derecha
+				contadorV = this->position.getY();
+				contadorH = this->position.getX();
+
+				while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
+					if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
+						return false;
+					}
+					if (board[contadorV][contadorH]->getColor() == 'N' ){
+						return false;
+					}
+					contadorV++;
+					contadorH++;
+				}
+				return true;
+
 			}
-			return true;
-
-
-
-				
-		}else if(this->position.getY()>destiny.getY() && this->position.getX()<destiny.getX()){
-			//Si la pieza esta en la parte inferior y movimiento diagonal a la derecha
-
-			contadorV = this->position.getY();
-			contadorH = this->position.getX();
-			contadorV--;
-			contadorH++;
-
-			while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
-				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
-					return false;
-				}
-				if (board[contadorV][contadorH]->getColor() == 'N' ){
-					return false;
-				}
-				contadorV--;
-				contadorH++;
-			}
-			return true;
-
-		}else if(this->position.getY()<destiny.getY() && this->position.getX()>destiny.getX()){
-			//Si la pieza esta en la parte superior y movimiento diagonal a la izquierda
-			contadorV = this->position.getY();
-			contadorH = this->position.getX();
-			contadorV++;
-			contadorH--;
-
-			while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
-				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
-					return false;
-				}
-				if (board[contadorV][contadorH]->getColor() == 'N' ){
-					return false;
-				}
-				contadorV--;
-				contadorH--;
-			}
-			return true;
-
-		}else if(this->position.getY()<destiny.getY() && this->position.getX()<destiny.getX()){
-			//Si la pieza esta en la parte superior y movimiento diagonal a la derecha
-			contadorV = this->position.getY();
-			contadorH = this->position.getX();
-			contadorV++;
-			contadorH++;
-
-			while (contadorV != destiny.getY() && contadorH != destiny.getX() ){
-				if ((contadorH>7 || contadorH<0) || (contadorV>7 || contadorV<0)){
-					return false;
-				}
-				if (board[contadorV][contadorH]->getColor() == 'N' ){
-					return false;
-				}
-				contadorV++;
-				contadorH++;
-			}
-			return true;
 
 		}
-
 	}
+	*/
 
 }
 
