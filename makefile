@@ -13,7 +13,7 @@ piece.o:	piece.cpp piece.hpp position.hpp
 king.o:	king.cpp king.hpp piece.hpp position.hpp
 	g++ -c king.cpp
 
-queen.o:	queen.cpp queen.hpp piece.hpp position.hpp
+queen.o:	queen.cpp queen.hpp piece.hpp position.hpp rook.hpp bishop.hpp
 	g++ -c queen.cpp
 
 rook.o:	rook.cpp rook.hpp piece.hpp position.hpp

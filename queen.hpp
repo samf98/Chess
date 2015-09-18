@@ -1,14 +1,14 @@
 #pragma once
-
+#include "rook.hpp"
 #include "piece.hpp"
+#include "bishop.hpp"
 #include "position.hpp"
 #include <string>
 
 using std::string;
 
-class Queen: public Piece, Rook, Bishop{
-	char color;
-	Position position;
+class Queen: public Piece, public Rook, public Bishop{
+	
   public: 
 	Queen(char color, int x, int y);//constructor
 	virtual bool isValidMove(Piece*** board, Position destiny);

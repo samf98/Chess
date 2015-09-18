@@ -1,5 +1,5 @@
 #include "piece.hpp" 
-#include "queen2.hpp" 
+#include "queen.hpp" 
 #include <string> 
 #include <iostream>
 #include <sstream>
@@ -9,7 +9,7 @@ using namespace std;
 Queen::Queen(char color, int x, int y):Piece(color, x, y){
 }
 bool Queen::isValidMove(Piece*** board, Position destiny){
-	if (Rook::isValidMove()||Bishop::isValidMove())
+	if (Rook::isValidMove(board, destiny)||Bishop::isValidMove(board, destiny))
 		return true;
 	else
 		return false;
