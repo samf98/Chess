@@ -11,17 +11,17 @@
 
 using namespace std;
 
-Piece** crearTablero(int rows, int cols);
-void destruirTablero(Piece** tablero, int rows, int cols);
-void imprimir(Piece** tablero);
-void chessInit(Piece** tablero);
+Piece*** crearTablero(int rows, int cols);
+void destruirTablero(Piece*** tablero, int rows, int cols);
+void imprimir(Piece*** tablero);
+void chessInit(Piece*** tablero);
 int charToInt(char coordenada);
 
 
 int main(int argc, char const *argv[]){
 	const int ROWS = 8;
 	const int COLS = 8;
-	Piece** tablero = crearTablero(ROWS,COLS);
+	Piece*** tablero = crearTablero(ROWS,COLS);
 
 	string nombre1,nombre2;
 	cout<<"Jugador1 ingrese su nombre: "<<endl;
@@ -47,8 +47,9 @@ int main(int argc, char const *argv[]){
 			cout<<"Ingrese fila a la desea mover la pieza: : ";
 			cin >> coordenada2;
 			y1 = charToInt(coordenada2);
+			Position pos(x1,y1);
 
-			tablero[y][x].moveTo(tablero,x1,y1);
+			tablero[y][x]->moveTo(tablero,pos);
 
 
 		}else{
@@ -65,38 +66,40 @@ int main(int argc, char const *argv[]){
 			cin >> coordenada2;
 			y1 = charToInt(coordenada2);
 
-			tablero[y][x].moveTo(tablero,x1,y1);
+			Position pos(x1,y1);
+
+			tablero[y][x]->moveTo(tablero,pos);
 		}
 	}
 
 	destruirTablero(tablero,ROWS,COLS);
 	return 0;
 }
-Piece** crearTablero(int rows, int cols){
-	Piece** retval = new Piece*[rows];
+Piece*** crearTablero(int rows, int cols){
+	Piece*** retval = new Piece**[rows];
 	for (int i = 0; i < rows; ++i)	{
-		retval[i] = new Piece[cols];
+		retval[i] = new Piece*[cols];
 	}
 	for (int i = 0; i < rows; ++i){
 		for (int j = 0; j < cols; ++j){
-			retval = NULL;
+			retval[i][j] = NULL;
 		}
 	}
 	chessInit(retval);
 	return retval;
 }
-void destruirTablero(Piece** tablero, int rows, int cols){
+void destruirTablero(Piece*** tablero, int rows, int cols){
 	for (int i = 0; i < cols; ++i)	{
-		delete[] retval[i];
+		delete[] tablero[i];
 	}
-	delete[] retval;
+	delete[] tablero;
 }
-void imprimir(Piece** tablero){//imprimir tablero
+void imprimir(Piece*** tablero){//imprimir tablero
 	char letras[] = "ABCDEFGH";
 	int numeros[] = {1,2,3,4,5,6,7,8};
 	for (int i = 0; i < 8; ++i){
 		for (int j = 0; j < 8; ++j)	{
-			cout << "[" << tablero[i][j].toString() << "]";
+			cout << "[" << tablero[i][j]->toString() << "]";
 		}
 		cout << letras[i] << endl;
 	}
@@ -105,7 +108,7 @@ void imprimir(Piece** tablero){//imprimir tablero
 	}
 	cout << endl;
 }
-void chessInit(Piece** tablero){//Inicializar tablero
+void chessInit(Piece*** tablero){//Inicializar tablero
 	//piezas blancas
 	//torres
 	tablero[0][0] = new Rook('B',0,0);

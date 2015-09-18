@@ -9,7 +9,7 @@ using std::string;
 class Rook: public Piece{
   public: 
 	Rook(char color, int x, int y);//constructor
-	virtual bool isValidMove(Piece** board, Position destiny);
-	virtual void moveTo(Piece** board, Position destiny);
+	virtual bool isValidMove(Piece*** board, Position destiny);
+	virtual void moveTo(Piece*** board, Position destiny);
 	virtual string toString()const;
 };

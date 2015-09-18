@@ -1,6 +1,6 @@
-#pragma once 
 #include "piece.hpp"
 #include "position.hpp"
+#include "king.hpp"
 #include <iostream>
 #include <sstream>
 using std::cout;
@@ -11,12 +11,12 @@ using std::stringstream;
 King::King(char color, int x , int y):Piece(color,x,y){
 
 }
-bool King::isValidMove(Piece** board, Position destiny){
+bool King::isValidMove(Piece*** board, Position destiny){
 	int diferenciaV, diferenciaH;
 
 	if(this->getColor()=='B'){
 		//Verifica que no sean del mismo color
-		if (board[destiny.getY()][destiny.getX()].getColor()=='B'){
+		if (*board[destiny.getY()][destiny.getX()].getColor()=='B'){
 			return false;	
 		} else{
 
@@ -42,7 +42,7 @@ bool King::isValidMove(Piece** board, Position destiny){
 
 		}	
 	}else{
-		if (board[destiny.getY()][destiny.getX()].getColor()=='N'){
+		if (*board[destiny.getY()][destiny.getX()].getColor()=='N'){
 			return false;	
 		} else{
 			//Busca la diferencia Vertical
@@ -71,11 +71,11 @@ bool King::isValidMove(Piece** board, Position destiny){
 
 
 }
-void King::moveTo(Piece** board, Position destiny){
-	if(isValidMove(board,destiny)){
-		board[position.getY()][position.getX()] = NULL;
+void King::moveTo(Piece** *board, Position destiny){
+	if(isValidMove(*board,destiny)){
+		*board[position.getY()][position.getX()] = NULL;
 		position = destiny;
-		board[position.getY()][position.getX()] = *this;
+		*board[position.getY()][position.getX()] = *this;
 	}
 	else{
 		cout << "Invalid move" << endl;

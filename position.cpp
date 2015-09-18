@@ -10,7 +10,7 @@ Position::Position(int x,int y){
 		this->y = y;
 	}
 }
-string Position::toString()const;{
+string Position::toString()const{
 	stringstream str;
 	str << "("<<x<<","<<y<<")";
 }

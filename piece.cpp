@@ -4,31 +4,23 @@
 
 using namespace std;
 
-Piece(char color, int x, int y){
+Piece::Piece(char color, int x, int y){
 	this->color = color;
 	this->position = Position(x,y);
 }
-char getColor()const{
+char Piece::getColor()const{
 	return color;
 }
-Position getPosition()const{
+Position Piece::getPosition()const{
 	return position;
 }
-void setColor(char color){
+void Piece::setColor(char color){
 	this->color = color;
 }
-void setPostion(Position position){
+void Piece::setPosition(Position position){
 	this->position = position;
 }
-virtual void moveTo(Position destiny){ //metodo debe definirse
-	if(isValidMove){
-		position = destiny;
-	}
-}
-virtual bool isValidMove(Piece** board, Position destiny){//metodo debe definirse
-	return true;
-}
-virtual string toString()const{
+string Piece::toString()const{
 	string retval = "";
 	return retval;
 }

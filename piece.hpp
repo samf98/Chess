@@ -9,12 +9,12 @@ class Piece{
 	char color;
 	Position position;
  public:
- 	Piece(char color, int x, int y);
+ 	Piece(char color = 'B', int x = 0, int y = 0);
 	char getColor()const;
 	Position getPosition()const;
-	void setColor();
-	void setPostion();
-	virtual void moveTo(Position destiny);
-	virtual bool isValidMove(Piece** board, Position destiny);
+	void setColor(char);
+	void setPosition(Position);
+	virtual void moveTo(Piece*** board, Position destiny)=0;
+	virtual bool isValidMove(Piece*** board, Position destiny)=0;
 	virtual string toString()const;
 };
