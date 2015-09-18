@@ -195,7 +195,7 @@ bool Bishop::isValidMove(Piece**board, Position destiny){
 
 }
 
-void Bishop::moveTo(Piece** board, Position destiny){
+void Bishop::moveTo(Piece*** board, Position destiny){
 	if(isValidMove(board,destiny)){
 		*board[position.getY()][position.getX()] = NULL;
 		position = destiny;
