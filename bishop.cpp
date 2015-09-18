@@ -22,205 +22,24 @@ bool Bishop::isValidMove(Piece***board, Position destiny){
 
 
 	if (fabs(this->position.getY()-destiny.getY())==fabs(this->position.getX()-destiny.getX())){
-
-
-		if (this->getColor() == 'B'){
-			if(this->position.getY() > destiny.getY() && this->position.getX()>destiny.getX()){
-				//si la posicion esta en un punto bajo y se quiere mover a la izquierda
-				contadorY=this->position.getY();
-				contadorX=this->position.getY();
-				contadorY--;
-				contadorX--;
-
-				while(true){
-					if (board[contadorY][contadorX] == NULL){
-						contadorY--;
-						contadorX--;
-
-					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='B'){
-						return false;
-					}
-					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
-						break;
-					}
-
-
-				}
+		if(this->color == 'B'){
+			if(board[destiny.getY()][destiny.getX()] == NULL ){
 				return true;
-
-
-
-			}else if(this->position.getY() > destiny.getY() && this->position.getX()<destiny.getX()){
-				//si la posicion esta en un punto bajo y se quiere mover a la derecha
-				contadorY=this->position.getY();
-				contadorX=this->position.getY();
-				contadorY--;
-				contadorX++;
-
-				while(true){
-					
-					if (board[contadorY][contadorX] == NULL){
-						contadorY--;
-						contadorX++;
-
-					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='B'){
-						return false;
-					}
-					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
-						break;
-					}
-				}
-				return true;
-
-			}else if(this->position.getY() < destiny.getY() && this->position.getX()>destiny.getX()){
-				//si la posicion esta en un punto alto y se quiere mover a la izquierda
-				contadorY=this->position.getY();
-				contadorX=this->position.getY();
-				contadorY++;
-				contadorX--;
-
-				while(true){
-					
-					if (board[contadorY][contadorX] == NULL){
-						contadorY++;
-						contadorX--;
-
-					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='B'){
-						return false;
-					}
-					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
-						break;
-					}
-				}
-				return true;
-
-			}else if(this->position.getY() < destiny.getY() && this->position.getX()<destiny.getX()){
-				// si la posicion esta en un punto alto y se quiere mover a la derecha
-				contadorY=this->position.getY();
-				contadorX=this->position.getY();
-				contadorY++;
-				contadorX++;
-
-				while(true){
-					
-					if (board[contadorY][contadorX] == NULL){
-						contadorY++;
-						contadorX++;
-
-					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='B'){
-						return false;
-					}
-					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
-						break;
-					}
-
-				}
+			}else if (board[destiny.getY()][destiny.getX()] != NULL && board[destiny.getY()][destiny.getX()] == 'B'){
+				return false;
+			}else if(board[destiny.getY()][destiny.getX()] != NULL && board[destiny.getY()][destiny.getX()] == 'N'){
 				return true;
 			}
 		} else {
-			//si el color de esta pieza es Negro
-
-			if(this->position.getY() > destiny.getY() && this->position.getX()>destiny.getX()){
-				//si la posicion esta en un punto bajo y se quiere mover a la izquierda
-				contadorY=this->position.getY();
-				contadorX=this->position.getY();
-				contadorY--;
-				contadorX--;
-
-
-				while(true){
-					
-					if (board[contadorY][contadorX] == NULL){
-						contadorY--;
-						contadorX--;
-
-					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='N'){
-						return false;
-					}
-					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
-						break;
-					}
-
-				}
+			if(board[destiny.getY()][destiny.getX()] == NULL ){
 				return true;
-
-
-
-			}else if(this->position.getY() > destiny.getY() && this->position.getX()<destiny.getX()){
-				//si la posicion esta en un punto bajo y se quiere mover a la derecha
-				contadorY=this->position.getY();
-				contadorX=this->position.getY();
-
-				contadorY--;
-				contadorX++;
-				while(true){
-					
-					
-					if (board[contadorY][contadorX] == NULL){
-						contadorY--;
-						contadorX++;
-
-					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='N'){
-						return false;
-					}
-					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
-						break;
-					}
-
-				}
-				
-				return true;
-
-			}else if(this->position.getY() < destiny.getY() && this->position.getX()>destiny.getX()){
-				//si la posicion esta en un punto alto y se quiere mover a la izquierda
-				contadorY=this->position.getY();
-				contadorX=this->position.getY();
-
-				contadorY++;
-				contadorX--;
-
-				while(true){
-					
-					if (board[contadorY][contadorX] == NULL){
-						contadorY++;
-						contadorX--;
-
-					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='N'){
-						return false;
-					}
-					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
-						break;
-					}
-
-				}
-				
-				return true;
-
-			}else if(this->position.getY() < destiny.getY() && this->position.getX()<destiny.getX()){
-				// si la posicion esta en un punto alto y se quiere mover a la derecha
-				contadorY=this->position.getY();
-				contadorX=this->position.getY();
-				contadorY++;
-				contadorX++;
-
-				while(true){
-					
-					if (board[contadorY][contadorX] == NULL){
-						contadorY++;
-						contadorX++;
-
-					} else if (board[contadorY][contadorX]!=NULL && board[contadorY][contadorX]->getColor()=='N'){
-						return false;
-					}
-					if(contadorX == destiny.getX() || contadorY==destiny.getY()){
-						break;
-					}
-
-				}
+			}else if (board[destiny.getY()][destiny.getX()] != NULL && board[destiny.getY()][destiny.getX()] == 'N'){
+				return false;
+			}else if(board[destiny.getY()][destiny.getX()] != NULL && board[destiny.getY()][destiny.getX()] == 'B'){
 				return true;
 			}
-
 		}
+	
 	}else{
 		return false;
 	}
@@ -405,14 +224,16 @@ bool Bishop::isValidMove(Piece***board, Position destiny){
 
 }
 
-void Bishop::moveTo(Piece*** board, Position destiny){
+bool Bishop::moveTo(Piece*** board, Position destiny){
 	if(isValidMove(board,destiny)){
 		board[position.getY()][position.getX()] = NULL;
 		position = destiny;
 		board[position.getY()][position.getX()] = this;
+		return true;
 	}
 	else{
 		cout << "Invalid move" << endl;
+		return false;
 	}
 }
 
