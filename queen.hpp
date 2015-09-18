@@ -7,8 +7,7 @@
 
 using std::string;
 
-class Queen: public Piece, public Rook, public Bishop{
-	
+class Queen: public Piece{
   public: 
 	Queen(char color, int x, int y);//constructor
 	virtual bool isValidMove(Piece*** board, Position destiny);
