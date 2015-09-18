@@ -88,6 +88,7 @@ int main(int argc, char const *argv[]){
 				}
 			}
 		}
+		gano = ganar(tablero);
 	}
 
 	destruirTablero(tablero,ROWS,COLS);
@@ -204,4 +205,20 @@ int charToInt(char coordenada){
 		default:
 			return -1;
 	}
+}
+bool ganar(Piece*** tablero){
+	int cont=0;
+	for (int i = 0; i < 8; ++i){
+		for (int j = 0; j < 8; ++j){
+			if(dynamic_cast<King*>(tablero[i][j]) != NULL){
+				King* king = dynamic_cast<King*>(tablero[i][j]);
+				cont++;
+			}
+		}
+	}
+	if (cont==1)
+	{
+		return true;
+	}
+	return false;
 }
