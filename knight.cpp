@@ -2,7 +2,7 @@
 #include "knight.hpp"
 #include "piece.hpp" 
 
-Knight::Knight(char color, int x , int y;):Piece(color, x, y){
+Knight::Knight(char color, int x , int y):Piece(color, x, y){
 }//constructor
 bool Knight::isValidMove(Piece*** board, Position destiny){
 	if (position.getX()+2 == destiny.getX() && position.getY()+1 == destiny.getY() && (board[destiny.getY()][destiny/getX()] == NULL|| board[destiny.getY()][destiny.getX()].getColor() != color))//x+2, y+1
