@@ -18,7 +18,7 @@ bool King::isValidMove(Piece*** board, Position destiny){
 		//Verifica que no sean del mismo color
 		if (board[destiny.getY()][destiny.getX()]->getColor()=='B'){
 			return false;	
-		} else{
+		} else if (board[destiny.getY()][destiny.getX()]==NULL || board[destiny.getY()][destiny.getX()]->getColor()=='N'){
 
 			//Busca la diferencia Vertical
 			if (destiny.getY()>this->position.getY()){
@@ -44,7 +44,7 @@ bool King::isValidMove(Piece*** board, Position destiny){
 	}else{
 		if (board[destiny.getY()][destiny.getX()]->getColor()=='N'){
 			return false;	
-		} else{
+		} else if (board[destiny.getY()][destiny.getX()]==NULL || board[destiny.getY()][destiny.getX()]->getColor()=='B'){
 			//Busca la diferencia Vertical
 			if (destiny.getY()>this->position.getY()){
 				diferenciaV = destiny.getY() - this->position.getY();
@@ -71,7 +71,7 @@ bool King::isValidMove(Piece*** board, Position destiny){
 
 
 }
-void King::moveTo(Piece** *board, Position destiny){
+void King::moveTo(Piece***board, Position destiny){
 	if(isValidMove(board,destiny)){
 		board[position.getY()][position.getX()] = NULL;
 		position = destiny;
