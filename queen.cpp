@@ -31,10 +31,10 @@ void Queen::moveTo(Piece*** board, Position destiny){
 string Queen::toString()const{
 	stringstream ss;
 	if (color == 'N'){
-		ss << "T";
+		ss << "Q";
 	}
 	else{
-		ss << "t";
+		ss << "q";
 	}
 	return ss.str();
 }
