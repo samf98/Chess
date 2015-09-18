@@ -17,6 +17,17 @@ bool Queen::isValidMove(Piece*** board, Position destiny){
 	else
 		return false;
 }
+void Queen::moveTo(Piece*** board, Position destiny){
+	if(isValidMove(board,destiny)){
+		board[position.getY()][position.getX()] = NULL;
+		position = destiny;
+		board[position.getY()][position.getX()] = this;
+	}
+	else{
+		cout << "Invalid move" << endl;
+	}
+}
+
 string Queen::toString()const{
 	stringstream ss;
 	if (color == 'N'){
