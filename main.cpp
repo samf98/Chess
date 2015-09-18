@@ -31,12 +31,12 @@ int main(int argc, char const *argv[]){
 	bool gano=false;
 	char coordenada1, coordenada2;	
 	while(!gano){
-		bool valid = false;
+		bool valid = false;//variable de validacion
 		imprimir(tablero);
 		turno += 1;
 		int x=0,y=0,x1=0,y1=0;
 		if (turno % 2 == 1) {
-			while(!valid){
+			while(!valid){//ciclo de validacion
 				cout<<"Turno de: "<<nombre1<<endl;
 				cout<<"Ingrese columna de la pieza que desea mover: ";
 				cin>>x;
@@ -51,16 +51,16 @@ int main(int argc, char const *argv[]){
 				cin >> coordenada2;
 				y1 = charToInt(coordenada2);
 				Position pos(x1,y1);
-				if (tablero[y][x]->getColor()=='B' && tablero[y][x] != NULL){
+				if (tablero[y][x]->getColor()=='B' && tablero[y][x] != NULL && (x1!=x && y1!=y)){//validacion de mover
 					tablero[y][x]->moveTo(tablero,pos);
-					valid = false;
+					valid = false;//variable de validacion
 				}else{
 					cerr << "No se puede mover las piezas del juagdor opuesto" << endl;
 				}
 			}
 
 		}else{
-			while(!valid){
+			while(!valid){//ciclo de validacion
 				cout<<"Turno de: "<<nombre2<<endl;
 				cout<<"Ingrese columna de la pieza que desea mover: ";
 				cin>>x;
@@ -76,9 +76,9 @@ int main(int argc, char const *argv[]){
 				y1 = charToInt(coordenada2);
 
 				Position pos(x1,y1);
-				if (tablero[y][x]->getColor()=='N' && tablero[y][x] != NULL){
+				if (tablero[y][x]->getColor()=='N' && tablero[y][x] != NULL && (x1!=x && y1!=y)){//validacion de mover
 					tablero[y][x]->moveTo(tablero,pos);
-					valid = false;
+					valid = false;//variable de validacion
 				}else{
 					cerr << "No se puede mover las piezas del juagdor opuesto" << endl;
 				}
