@@ -3,6 +3,8 @@
 #include "position.hpp"
 #include <string>
 #include <cmath>
+#include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -13,7 +15,7 @@ bool Pawn::isValidMove(Piece*** board, Position destiny){
 	int diffY = abs(position.getY()-destiny.getY());
 	if(color == 'N'){
 		int diffX = position.getX()-destiny.getX();
-		if((diffY==1&&diffX==0) || (diffY==2&&firstMove&&diffX==0){ //primer movimiento o movimiento hacia adelante
+		if((diffY==1&&diffX==0) || (diffY==2&&firstMove&&diffX==0)){ //primer movimiento o movimiento hacia adelante
 			if(board[destiny.getY()][destiny.getX()] == NULL)
 				return true;
 			return false;
@@ -28,7 +30,7 @@ bool Pawn::isValidMove(Piece*** board, Position destiny){
 		}
 	} else if(color == 'B'){
 		int diffX = destiny.getX()-position.getX();
-		if((diffY==1&&diffX==0) || (diffY==2&&firstMove&&diffX==0){ //primer movimiento o movimiento hacia adelante
+		if((diffY==1&&diffX==0) || (diffY==2&&firstMove&&diffX==0)){ //primer movimiento o movimiento hacia adelante
 			if(board[destiny.getY()][destiny.getX()] == NULL)
 				return true;
 			return false;
