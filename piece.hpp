@@ -14,7 +14,7 @@ class Piece{
 	Position getPosition()const;
 	void setColor(char);
 	void setPosition(Position);
-	virtual void moveTo(Piece*** board, Position destiny)=0;
+	virtual bool moveTo(Piece*** board, Position destiny)=0;
 	virtual bool isValidMove(Piece*** board, Position destiny)=0;
 	virtual string toString()const;
 };

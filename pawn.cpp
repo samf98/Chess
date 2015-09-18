@@ -45,14 +45,16 @@ bool Pawn::isValidMove(Piece*** board, Position destiny){
 		}
 	}
 }
-void Pawn::moveTo(Piece*** board, Position destiny){
+bool Pawn::moveTo(Piece*** board, Position destiny){
 	if(isValidMove(board,destiny)){
 		board[position.getY()][position.getX()] = NULL;
 		position = destiny;
 		board[position.getY()][position.getX()] = this;
+		return true;
 	}
 	else{
 		cout << "Invalid move" << endl;
+		return false;
 	}
 }
 string Pawn::toString()const{

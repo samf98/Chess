@@ -28,14 +28,16 @@ bool Knight::isValidMove(Piece*** board, Position destiny){
 	else
 		return false;
 }//si el moviemiento es valido
-void Knight::moveTo(Piece*** board, Position destiny){
+bool Knight::moveTo(Piece*** board, Position destiny){
 	if(isValidMove(board,destiny)){
 		board[position.getY()][position.getX()] = NULL;
 		position = destiny;
 		board[position.getY()][position.getX()] = this;
+		return true;
 	}
 	else{
 		cout << "Invalid move" << endl;
+		return false;
 	}
 }//se mueve
 string Knight::toString()const{
