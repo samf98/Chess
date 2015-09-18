@@ -17,7 +17,6 @@ void imprimir(Piece*** tablero);
 void chessInit(Piece*** tablero);
 int charToInt(char coordenada);
 
-
 int main(int argc, char const *argv[]){
 	const int ROWS = 8;
 	const int COLS = 8;
@@ -32,48 +31,58 @@ int main(int argc, char const *argv[]){
 	bool gano=false;
 	char coordenada1, coordenada2;	
 	while(!gano){
+		bool valid = false;
 		imprimir(tablero);
 		turno += 1;
 		int x=0,y=0,x1=0,y1=0;
 		if (turno % 2 == 1) {
-			
-			cout<<"Turno de: "<<nombre1<<endl;
-			cout<<"Ingrese columna de la pieza que desea mover: ";
-			cin>>x;
-			x--;
-			cout<<"Ingrese fila de la pieza que desea mover: ";
-			cin >> coordenada1;
-			y = charToInt(coordenada1);
-			cout<<"Ingrese columna a la desea mover la pieza: ";
-			cin>>x1;
-			x1--;
-			cout<<"Ingrese fila a la desea mover la pieza: : ";
-			cin >> coordenada2;
-			y1 = charToInt(coordenada2);
-			Position pos(x1,y1);
-
-			tablero[y][x]->moveTo(tablero,pos);
-
+			while(!valid){
+				cout<<"Turno de: "<<nombre1<<endl;
+				cout<<"Ingrese columna de la pieza que desea mover: ";
+				cin>>x;
+				x--;
+				cout<<"Ingrese fila de la pieza que desea mover: ";
+				cin >> coordenada1;
+				y = charToInt(coordenada1);
+				cout<<"Ingrese columna a la desea mover la pieza: ";
+				cin>>x1;
+				x1--;
+				cout<<"Ingrese fila a la desea mover la pieza: : ";
+				cin >> coordenada2;
+				y1 = charToInt(coordenada2);
+				Position pos(x1,y1);
+				if (tablero[y][x]->getColor()=='B' && tablero[y][x] != NULL){
+					tablero[y][x]->moveTo(tablero,pos);
+					valid = false;
+				}else{
+					cerr << "No se puede mover las piezas del juagdor opuesto" << endl;
+				}
+			}
 
 		}else{
+			while(!valid){
+				cout<<"Turno de: "<<nombre2<<endl;
+				cout<<"Ingrese columna de la pieza que desea mover: ";
+				cin>>x;
+				x--;
+				cout<<"Ingrese fila de la pieza que desea mover: ";
+				cin >> coordenada1;
+				y = charToInt(coordenada1);
+				cout<<"Ingrese columna a la desea mover la pieza: ";
+				cin>>x1;
+				x1--;
+				cout<<"Ingrese fila a la desea mover la pieza: : ";
+				cin >> coordenada2;
+				y1 = charToInt(coordenada2);
 
-			cout<<"Turno de: "<<nombre2<<endl;
-			cout<<"Ingrese columna de la pieza que desea mover: ";
-			cin>>x;
-			x--;
-			cout<<"Ingrese fila de la pieza que desea mover: ";
-			cin >> coordenada1;
-			y = charToInt(coordenada1);
-			cout<<"Ingrese columna a la desea mover la pieza: ";
-			cin>>x1;
-			x1--;
-			cout<<"Ingrese fila a la desea mover la pieza: : ";
-			cin >> coordenada2;
-			y1 = charToInt(coordenada2);
-
-			Position pos(x1,y1);
-
-			tablero[y][x]->moveTo(tablero,pos);
+				Position pos(x1,y1);
+				if (tablero[y][x]->getColor()=='N' && tablero[y][x] != NULL){
+					tablero[y][x]->moveTo(tablero,pos);
+					valid = false;
+				}else{
+					cerr << "No se puede mover las piezas del juagdor opuesto" << endl;
+				}
+			}
 		}
 	}
 
