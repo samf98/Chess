@@ -16,8 +16,10 @@ bool Pawn::isValidMove(Piece*** board, Position destiny){
 	if(color == 'N'){
 		int diffX = position.getX()-destiny.getX();
 		if((diffY==1&&diffX==0) || (diffY==2&&firstMove&&diffX==0)){ //primer movimiento o movimiento hacia adelante
-			if(board[destiny.getY()][destiny.getX()] == NULL)
+			if(board[destiny.getY()][destiny.getX()] == NULL){
+				firstMove = false;//validando que el programa sepa que ya se hizo el primer movimiento de esta pieza (boop)
 				return true;
+			}
 			return false;
 		}
 		else if((diffY==1&&diffX==1)){
@@ -31,8 +33,10 @@ bool Pawn::isValidMove(Piece*** board, Position destiny){
 	} else if(color == 'B'){
 		int diffX = destiny.getX()-position.getX();
 		if((diffY==1&&diffX==0) || (diffY==2&&firstMove&&diffX==0)){ //primer movimiento o movimiento hacia adelante
-			if(board[destiny.getY()][destiny.getX()] == NULL)
+			if(board[destiny.getY()][destiny.getX()] == NULL){
+				firstMove = false;//validando que el programa sepa que ya se hizo el primer movimiento de esta pieza (boop)
 				return true;
+			}
 			return false;
 		}
 		else if((diffY==1&&diffX==1)){
@@ -57,6 +61,7 @@ bool Pawn::moveTo(Piece*** board, Position destiny){
 		return false;
 	}
 }
+
 string Pawn::toString()const{
 	stringstream ss;
 	if (color == 'N'){
@@ -66,4 +71,9 @@ string Pawn::toString()const{
 		ss << "p";
 	}
 	return ss.str();
+}
+
+void Pawn::setFirstMove(bool pFirstMove)
+{
+	firstMove = pFirstMove;
 }

@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <sstream>
 #include "position.hpp"
 #include "piece.hpp"
 #include "king.hpp"
@@ -13,10 +15,12 @@ using namespace std;
 
 Piece*** crearTablero(int rows, int cols);
 void destruirTablero(Piece*** tablero, int rows, int cols);
-void imprimir(Piece*** tablero);
+string imprimir(Piece*** tablero);
 void chessInit(Piece*** tablero);
 int charToInt(char coordenada);
 bool ganar(Piece*** tablero);
+void guardarArchivo(Piece*** tablero);
+Piece*** cargarArchivo();
 
 int main(int argc, char const *argv[]){
 	const int ROWS = 8;
@@ -28,12 +32,14 @@ int main(int argc, char const *argv[]){
 	cin>>nombre1;
 	cout<<"Jugador2 ingrese su nombre: "<<endl;
 	cin>>nombre2;
+	string impresion;
 	int turno=0;
 	bool gano=false;
 	char coordenada1, coordenada2;	
 	while(!gano){
 		bool valid = false;//variable de validacion
-		imprimir(tablero);
+		impresion = imprimir(tablero);
+		cout << impresion;
 		turno++;
 		int x=0,y=0,x1=0,y1=0;
 		if (turno % 2 == 1) {
@@ -52,13 +58,21 @@ int main(int argc, char const *argv[]){
 				cin >> coordenada2;
 				y1 = charToInt(coordenada2);
 				Position pos(x1,y1);
-				if (tablero[y][x]->getColor()=='B' && tablero[y][x] != NULL){//validacion de mover
-					if(tablero[y][x]->moveTo(tablero,pos))
-						valid = true;//variable de validacion
-					else
-						valid = false;
-				}else{
-					cerr << "No se puede mover las piezas del juagdor opuesto" << endl;
+				//if para validar que las posiciones x, x1, y, y1 sean válidas y no se salgan de la matriz (Samir approves :) )
+				if( (x>-1&&x<9) && (x1>-1&&x1<9) && (y>-1&&y<9) && (y1>-1&&y1<9) && ((x!=x1) || (y!=y1))){
+					if (tablero[y][x]->getColor()=='B' && tablero[y][x] != NULL){//validacion de mover
+						if(tablero[y][x]->moveTo(tablero,pos))
+							valid = true;//variable de validacion
+						else
+							valid = false;
+					}else{
+						cerr << "No se puede mover las piezas del juagdor opuesto" << endl;
+					}
+				}
+				//else en caso de que las posiciones sean inválidas (Hola aceituno :) )
+				else{
+					valid = false;
+					cout<<"Posiciones invalidas ingresadas."<<endl;
 				}
 			}
 
@@ -79,13 +93,20 @@ int main(int argc, char const *argv[]){
 				y1 = charToInt(coordenada2);
 
 				Position pos(x1,y1);
-				if (tablero[y][x]->getColor()=='N' && tablero[y][x] != NULL){//validacion de mover
-					if(tablero[y][x]->moveTo(tablero,pos))
-						valid = true;//variable de validacion
-					else
-						valid = false;
+				//if para validar que las posiciones x, x1, y, y1 sean válidas y no se salgan de la matriz (Samir approves :) )
+				if( (x>-1&&x<9) && (x1>-1&&x1<9) && (y>-1&&y<9) && (y1>-1&&y1<9) && ((x!=x1) || (y!=y1))){
+					if (tablero[y][x]->getColor()=='N' && tablero[y][x] != NULL){//validacion de mover
+						if(tablero[y][x]->moveTo(tablero,pos))
+							valid = true;//variable de validacion
+						else
+							valid = false;
+					}else{
+						cerr << "No se puede mover las piezas del jugador opuesto" << endl;
+					}
+				//else en caso de que las posiciones sean inválidas (Hola aceituno :) )
 				}else{
-					cerr << "No se puede mover las piezas del jugador opuesto" << endl;
+					valid = false;
+					cout<<"Posiciones invalidas ingresadas."<<endl;
 				}
 			}
 		}
@@ -114,22 +135,26 @@ void destruirTablero(Piece*** tablero, int rows, int cols){
 	}
 	delete[] tablero;
 }
-void imprimir(Piece*** tablero){//imprimir tablero
+
+//para guardar archivos voy a hacer que este método devuelva un string :)
+string imprimir(Piece*** tablero){//imprimir tablero
 	char letras[] = "ABCDEFGH";
+	stringstream ss;
 	int numeros[] = {1,2,3,4,5,6,7,8};
 	for (int i = 0; i < 8; ++i){
 		for (int j = 0; j < 8; ++j)	{
-			if(tablero[i][j] != NULL)
-				cout << "[" << tablero[i][j]->toString() << "]";
-			else
-				cout << "[ ]";
+			if(tablero[i][j] != NULL){
+				ss << "[" << tablero[i][j]->toString() << "]";
+			}else
+				ss << "[ ]";
 		}
-		cout << letras[i] << endl;
+		ss << letras[i] << endl;
 	}
 	for (int i = 0; i < 8; ++i)	{
-		cout << " " << numeros[i] << " ";
+		ss << " " << numeros[i] << " ";
 	}
-	cout << endl;
+	ss << endl;
+	return ss.str();
 }
 void chessInit(Piece*** tablero){//Inicializar tablero
 	//piezas blancas
@@ -222,4 +247,89 @@ bool ganar(Piece*** tablero){
 		return true;
 	}
 	return false;
+}
+
+void guardarArchivo(Piece*** tablero)
+{
+	ofstream myfile;
+	string text;
+    myfile.open("data.txt");
+    text = "";
+    text = imprimir(tablero);
+    myfile<<text;
+    myfile.close();
+}
+
+Piece*** cargarArchivo()
+{
+	Piece*** tablero;
+	string text;
+	ifstream infile;
+	char posicion;
+	infile.open("data.txt");
+	int cont=1;
+	do
+	{
+		getline(infile,text);
+		for (int i = 0; i < 24; ++i)
+		{
+			if((i==1)||(i==4)||(i==7)||(i==10)||(i==13)||(i==16)||(i==19)||(i==22))
+			{
+				posicion = text[i];
+				switch(posicion)
+				{
+					case 'p':
+					{
+						break;
+					}
+					case 'r':
+					{
+						break;
+					}
+					case 'c':
+					{
+						break;
+					}
+					case 'a':
+					{
+						break;
+					}
+					case 'q':
+					{
+						break;
+					}
+					case 'k':
+					{
+						break;
+					}
+					case 'P':
+					{
+						break;
+					}
+					case 'R':
+					{
+						break;
+					}
+					case 'C':
+					{
+						break;
+					}
+					case 'A':
+					{
+						break;
+					}
+					case 'Q':
+					{
+						break;
+					}
+					case 'K':
+					{
+						break;
+					}
+				}
+			}
+		}
+	}while(!infile.eof());
+	infile.close();
+	return tablero;
 }
